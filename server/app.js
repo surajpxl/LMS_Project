@@ -1,7 +1,8 @@
-const express = require('express');
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const {config} = require('dotenv')
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import morgan from 'morgan'
+import {config} from 'dotenv'
 config()
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(cors({
 }));
 
 app.use(cookieParser())
+
+app.use(morgan('dev'))
 
 app.use('/ping', (req, res)=>{
     res.send('Pong');
@@ -29,4 +32,4 @@ app.use((req, res) => {
   res.status(404).send('OOPS!! 404 page is not found');
 });
 
-module.exports = app;
+export default app;
