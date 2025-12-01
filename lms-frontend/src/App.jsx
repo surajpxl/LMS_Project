@@ -1,6 +1,6 @@
-import './App.css'
+import './App.css';
 
-import { Routes } from 'react-router-dom'
+import { Routes } from 'react-router-dom';
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
     
    </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
