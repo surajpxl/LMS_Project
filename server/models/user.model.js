@@ -1,0 +1,1 @@
+import {schema, model} from 'mongoose'
