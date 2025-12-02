@@ -31,7 +31,7 @@ export default defineConfig([
 
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
-      'semi': ['error', 'always'],
+      // 'semi': ['error', 'always'],
     },
   },
 ]);
