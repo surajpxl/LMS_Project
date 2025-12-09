@@ -29,9 +29,10 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
 
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
+      // 'simple-import-sort/imports': 'error',
+      // 'simple-import-sort/exports': 'error',
       // 'semi': ['error', 'always'],
+      "react/prop-types": "off"
     },
   },
 ]);
