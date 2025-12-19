@@ -4,6 +4,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import {config} from 'dotenv'
 import userRoutes from './routes/user.routes.js'
+import errorMiddleware from './middlewares/error.middleware.js'
 config()
 
 const app = express();
@@ -34,5 +35,7 @@ app.use('/api/v1/user', userRoutes)
 app.use((req, res) => {
   res.status(404).send('OOPS!! 404 page is not found');
 });
+
+app.use(errorMiddleware)
 
 export default app;
