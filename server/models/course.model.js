@@ -36,9 +36,11 @@ const courseSchema = new Schema(
         lectures: {
           public_id: {
             type: String,
+            required:true
           },
           secure_url: {
             type: String,
+            required:true
           },
         },
       },
