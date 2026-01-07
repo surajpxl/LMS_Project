@@ -13,10 +13,16 @@ const cookieOptions = {
 };
 
 const register = async (req, res, next) => {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, role } = req.body;
 
-  if (!fullName || !email || !password) {
+  if (!fullName || !email || !password || !role) {
     return next(new AppError("All fields are required", 400));
+  }
+
+
+   // Validate role if sent (optional, since schema has enum/default)
+   if (role && !['USER', 'ADMIN'].includes(role)) {
+    return next(new AppError("Invalid role. Must be USER or ADMIN", 400));
   }
 
   const userExists = await User.findOne({ email });
@@ -29,6 +35,7 @@ const register = async (req, res, next) => {
     fullName,
     email,
     password,
+    role,
     avatar: {
       public_id: email,
       secure_url:
