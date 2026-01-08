@@ -1,12 +1,12 @@
 import { model, Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import crypto from 'crypto'
+import crypto from "crypto";
 
 const userSchema = new Schema(
   {
     fullName: {
-      type:String,
+      type: String,
       required: [true, "Name is required"],
       minLength: [5, "Name must be atleast 5 character"],
       maxLength: [50, "Name should be less than 50 characters"],
@@ -14,7 +14,7 @@ const userSchema = new Schema(
       trim: true,
     },
     email: {
-      type:String,
+      type: String,
       required: [true, "Email is required"],
       lowercase: true,
       trim: true,
@@ -25,21 +25,21 @@ const userSchema = new Schema(
       ], // Matches email against regex
     },
     password: {
-      type:String,
+      type: String,
       required: [true, "Password is required"],
       minLength: [8, "Password must be atleast 8 character"],
       select: false,
     },
     avatar: {
       public_id: {
-        type:String,
+        type: String,
       },
       secure_url: {
-        type:String,
+        type: String,
       },
     },
     role: {
-      type:String,
+      type: String,
       enum: ["USER", "ADMIN"],
       default: "USER",
     },
@@ -81,10 +81,9 @@ userSchema.methods = {
     const resetToken = crypto.randomBytes(20).toString("hex");
 
     this.forgotPasswordToken = crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex')
-    ;
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
     this.forgotPasswordExpiry = Date.now() + 15 * 60 * 1000; //15min from now
 
     return resetToken;
