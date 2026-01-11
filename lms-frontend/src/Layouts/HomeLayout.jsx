@@ -93,7 +93,7 @@ function HomeLayout({ children }) {
                 <li>
                   <div className="flex flex-row gap-2 p-2 justify-center self-start">
                     <button className="btn btn-sm btn-primary no-underline">
-                      <Link to="/user/profile">Profile</Link>
+                      <Link to="/signup">Profile</Link>
                     </button>
                     <button className="btn btn-sm btn-secondary no-underline">
                       <Link onClick={handleLogout}>Logout</Link>

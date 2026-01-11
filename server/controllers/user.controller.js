@@ -15,7 +15,7 @@ const cookieOptions = {
 const register = async (req, res, next) => {
   const { fullName, email, password, role } = req.body;
 
-  if (!fullName || !email || !password || !role) {
+  if (!fullName || !email || !password) {
     return next(new AppError("All fields are required", 400));
   }
 
@@ -28,7 +28,7 @@ const register = async (req, res, next) => {
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    return next(new AppError("Email already exists", 400));
+    return next(new AppError("Email already exists", 409));
   }
 
   const user = await User.create({
